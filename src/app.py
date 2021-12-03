@@ -20,8 +20,8 @@ cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 compress = Compress(app)
 
-db_initializer = DBInitializer()
-db_initializer.init_db()
+#db_initializer = DBInitializer()
+#db_initializer.init_db()
 
 
 @app.before_request
