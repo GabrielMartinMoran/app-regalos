@@ -247,14 +247,14 @@ def my_claimed_gifts():
 
 
 @app.route('/', methods=[http_methods.GET])
-@compress.compressed()
+#@compress.compressed()
 def root():
     return send_from_directory(ConfigProvider.CLIENT_APP_FOLDER, 'index.html',
                                max_age=-1 if ConfigProvider.RUN_DEBUG_MODE else 10)
 
 
 @app.route('/<path:path>', methods=[http_methods.GET])
-@compress.compressed()
+#@compress.compressed()
 def static_file(path):
     return send_from_directory(ConfigProvider.CLIENT_APP_FOLDER, path,
                                max_age=-1 if ConfigProvider.RUN_DEBUG_MODE else 10)
