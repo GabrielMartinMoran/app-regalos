@@ -1,4 +1,3 @@
-import pathlib
 from flask import Flask, request, send_from_directory, make_response, Response, jsonify
 from flask_cors import CORS
 from flask_compress import Compress
@@ -12,7 +11,6 @@ from src.models.token import Token
 from src.repositories.user_repository import UserRepository
 from src.repositories.gift_repository import GiftRepository
 from src.config_provider import ConfigProvider
-from src.static_files_provider import StaticFilesProvider
 from src.utils import http_methods, hashing
 
 print('Starting app')
@@ -26,10 +24,6 @@ print('Initializing DB')
 db_initializer = DBInitializer()
 db_initializer.init_db()
 print('DB initialized successfully')
-
-print('Initializing static files provider')
-static_files_provider = StaticFilesProvider()
-print('Static Files provider initialized successfully')
 
 
 @app.before_request
@@ -254,33 +248,16 @@ def my_claimed_gifts():
         return jsonify({'message': 'Internal server error'}), 500
 
 
-"""
-@app.route('/favicon.ico', methods=[http_methods.GET])
-@compress.compressed()
-def favicon():
-    return send_from_directory(ConfigProvider.CLIENT_APP_FOLDER, 'favicon.ico', max_age=-1)
-"""
-
 @app.route('/', methods=[http_methods.GET])
 @compress.compressed()
 def root():
     return send_from_directory(ConfigProvider.CLIENT_APP_FOLDER, 'index.html', max_age=-1)
-    """
-    if ConfigProvider.RUN_DEBUG_MODE:
-        return send_from_directory(ConfigProvider.CLIENT_APP_FOLDER, 'index.html', max_age=-1)
-    return static_files_provider.static_file_response('index.html')
-    """
 
 
 @app.route('/<path:path>', methods=[http_methods.GET])
 @compress.compressed()
 def static_file(path):
     return send_from_directory(ConfigProvider.CLIENT_APP_FOLDER, path, max_age=-1)
-    """
-    if ConfigProvider.RUN_DEBUG_MODE:
-        return send_from_directory(ConfigProvider.CLIENT_APP_FOLDER, path, max_age=-1)
-    return static_files_provider.static_file_response(path)
-    """
 
 
 def run(debug: bool, port: int):
