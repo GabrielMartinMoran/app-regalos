@@ -12,13 +12,17 @@ from models.gift import Gift
 from models.token import Token
 from repositories.user_repository import UserRepository
 from repositories.gift_repository import GiftRepository
-from repositories.spreadsheet_repository import SpreadsheetRepository
 from utils import http_methods, hashing
+
+print('Starting app')
 
 app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 compress = Compress(app)
+
+db_initializer = DBInitializer()
+db_initializer.init_db()
 
 
 @app.before_request
@@ -256,9 +260,6 @@ def static_file(path):
 
 
 def run():
-    db_initializer = DBInitializer()
-    db_initializer.init_db()
-    # spreadsheet_repository = SpreadsheetRepository()
     app.run(debug=ConfigProvider.RUN_DEBUG_MODE,
             use_reloader=ConfigProvider.USE_RELOADER,
             port=ConfigProvider.APP_PORT)
