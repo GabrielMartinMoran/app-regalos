@@ -81,7 +81,17 @@ export class Login extends Component {
     }
 
     async _login() {
-        await this._authRepository.login(this._formData);
+        try {
+            await this._authRepository.login(this._formData);
+        } catch (error) {
+            let mesage = '';
+            if (error?.message === 'Forbidden') {
+                mesage = '¡El usuario o contraseña ingresados no son válidos!';
+            } else {
+                mesage = '¡Ha ocurrido un error al tratar de contactar al servidor de la aplicación!';
+            }
+            alert(mesage);
+        }
     }
 
     _clickLoginButton() {

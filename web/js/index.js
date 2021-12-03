@@ -1,11 +1,9 @@
 import { AppMenu } from './app-menu.js';
 import { Component } from './component.js';
-import { Button } from './components/button.js';
 import { Navbar } from './components/navbar.js';
 import { Pallete } from './config.js';
 import { AuthRepository } from './repositories/auth-repository.js';
 import { ScreenSizeHelper } from './utils/screen-size-helper.js';
-import { Login } from './views/login.js';
 
 export class Index extends Component {
 
@@ -108,6 +106,12 @@ export class Index extends Component {
                 position: fixed;
                 z-index: 2001;
             }
+
+            @font-face {
+                font-family: 'emoji';
+                src: url('emojione-svg.woff2')
+                format('woff2');
+              }
 
 
             ${ScreenSizeHelper.onLargeScreensAndBellow} {

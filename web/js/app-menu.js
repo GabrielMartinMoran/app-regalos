@@ -21,16 +21,22 @@ export class AppMenu extends Component {
         <div class="container" id="appMenu" hidden>
             <h2 id="appTitle">Regalorio</h2>
             <span id="navbarSpacer"></span>
+            <hr id="menuDivider">  
             ${
                 new Link('homeLink', '#/home', '🏠 Inicio', 'menuItem', () => this._onMenuItemClick()).render() +
                 new Link('searchUsersLink', '#/search-users', '🔭 Buscar usuarios', 'menuItem', () => this._onMenuItemClick()).render() +
                 new Link('myGiftsLink', '#/my-gifts', '📜 Mis lista de regalos', 'menuItem', () => this._onMenuItemClick()).render() +
                 new Link('myClaimsLink', '#/my-claims', '📑 Mis encargos', 'menuItem', () => this._onMenuItemClick()).render()
             }
-            <hr id="logoutDivider">       
+            <hr id="menuDivider">       
+            ${
+                new Link('toggleThemeLink', '', this._isLightTheme() ? '🌚 Cambiar a tema oscuro': '🌞 Cambiar a tema claro', 'menuItem', () => this._toggleTheme()).render()
+            }
+            <hr id="menuDivider">       
             ${
                 new Link('logoutLink', '', '💤 Cerrar sesión', 'menuItem', () => this._logout()).render()
             }
+            <hr id="menuDivider"> 
         </div>
         `;
     }
@@ -48,10 +54,10 @@ export class AppMenu extends Component {
                 margin-bottom: 1rem;
             }
 
-            #logoutDivider {
+            #menuDivider {
                 display: block;
                 margin-top: 2rem;
-                margin-bottom: 1rem;
+                margin-bottom: 2rem;
                 border: 1px solid ${Pallete.PRIMARY};
                 border-radius: 1px;
             }
@@ -88,5 +94,20 @@ export class AppMenu extends Component {
 
     _logout() {
         this._authRepository.logout();
+    }
+
+    _toggleTheme() {
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'light') {
+            localStorage.setItem('theme', 'dark');
+        } else {
+            localStorage.setItem('theme', 'light');
+        }
+        window.location.reload();
+    }
+
+    _isLightTheme() {
+        const currentTheme = localStorage.getItem('theme');
+        return currentTheme === 'light' || !currentTheme;
     }
 }
