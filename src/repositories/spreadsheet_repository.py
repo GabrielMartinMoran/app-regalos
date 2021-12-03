@@ -7,8 +7,8 @@ from src.config_provider import ConfigProvider
 
 
 class SpreadsheetRepository:
-    #__gc = pygsheets.authorize(service_account_env_var='GOOGLE_JSON_TOKEN')
-    #_spreadsheet = __gc.open(ConfigProvider.GOOGLE_SHEET_DB_NAME)
+    __gc = pygsheets.authorize(service_account_env_var='GOOGLE_JSON_TOKEN')
+    _spreadsheet = __gc.open(ConfigProvider.GOOGLE_SHEET_DB_NAME)
 
     _TABLE_NAME = None
 
