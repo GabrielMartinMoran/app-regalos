@@ -254,6 +254,12 @@ def my_claimed_gifts():
         return jsonify({'message': 'Internal server error'}), 500
 
 
+@app.route('/favicon.ico', methods=[http_methods.GET])
+@compress.compressed()
+def favicon():
+    return send_from_directory(ConfigProvider.CLIENT_APP_FOLDER, 'favicon.ico', max_age=-1)
+
+
 @app.route('/', methods=[http_methods.GET])
 @compress.compressed()
 def root():

@@ -49,7 +49,8 @@ class StaticFilesProvider:
         return self._files.get(path, None)
 
     def static_file_response(self, path: str) -> Response:
-        file_content = f'/{self._get_file_content(path)}'.replace('//', '/')
+        clean_path = f'/{path}'.replace('//', '/')
+        file_content = self._get_file_content(clean_path)
         if file_content is None:
             return Response(status=404)
         return Response(file_content, mimetype=self._get_mimetype(path))
