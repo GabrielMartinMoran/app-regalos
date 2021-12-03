@@ -52,6 +52,8 @@ export class AppMenu extends Component {
                 display: block;
                 margin-top: 2rem;
                 margin-bottom: 1rem;
+                border: 1px solid ${Pallete.PRIMARY};
+                border-radius: 1px;
             }
 
             ${ScreenSizeHelper.onLargeScreens} {

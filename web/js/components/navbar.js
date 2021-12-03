@@ -22,6 +22,13 @@ export class Navbar extends Component {
             }
             <span id="navbarElementsSpacer"></span>
             <h2>Regalorio</h2>
+            <div id="themeChangerContainer">
+            ${
+                new Button('themeChangerButton', 'icon',
+                    this._isLightTheme() ? '🌚' : '🌞',
+                    () => { this._toggleTheme() }).render()
+            }
+            </div>
         </div>
         `;
     }
@@ -41,6 +48,27 @@ export class Navbar extends Component {
             #navbarElementsSpacer {
                 padding-left: 0.5rem;
             }
+
+            #themeChangerContainer {
+                flex: 1;
+                text-align: right;
+                margin-right: 1rem;
+            }
         `;
+    }
+
+    _toggleTheme() {
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'light') {
+            localStorage.setItem('theme', 'dark');
+        } else {
+            localStorage.setItem('theme', 'light');
+        }
+        window.location.reload();
+    }
+
+    _isLightTheme() {
+        const currentTheme = localStorage.getItem('theme');
+        return currentTheme === 'light' || !currentTheme;
     }
 }

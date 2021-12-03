@@ -19,9 +19,16 @@ const registerComponentUnloader = () => {
     }, 100);
 }
 
+function loadTheme() {
+    if(!localStorage.getItem('theme')) {
+        localStorage.setItem('theme', 'light');
+    }
+}
+
 
 function onLoad() {
     registerComponentUnloader();
+    loadTheme()
     index.drawIn('indexViewport');
     router.setUp();
 }

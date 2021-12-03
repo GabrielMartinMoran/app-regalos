@@ -18,7 +18,7 @@ export class SearchUsers extends Component {
 
     _getElementHtml() {
         return /*html*/`
-        <h2>👨‍👩‍👧‍👦 Buscar usuarios</h2>
+        <h2>🔭 Buscar usuarios</h2>
         <h4>¿A quién podríamos hacerle un regalo?<h4>
         <div id="usersList"></div>
         `;
