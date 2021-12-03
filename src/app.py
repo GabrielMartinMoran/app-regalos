@@ -15,7 +15,7 @@ from src.utils import http_methods, hashing
 
 print('Starting app')
 
-app = Flask(__name__, static_url_path='')
+app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 compress = Compress(app)

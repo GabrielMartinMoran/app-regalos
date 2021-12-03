@@ -2,7 +2,7 @@ import os
 
 
 class ConfigProvider:
-    CLIENT_APP_FOLDER = '../web'
+    CLIENT_APP_FOLDER = './web'
     RUN_DEBUG_MODE = os.environ.get('DEBUG_MODE', 'False').lower() == 'true'
     USE_RELOADER = os.environ.get('USE_RELOADER', 'False').lower() == 'true'
     APP_PORT = os.environ.get('APP_PORT', 5000)
