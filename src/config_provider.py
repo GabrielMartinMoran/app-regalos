@@ -8,4 +8,4 @@ class ConfigProvider:
     GOOGLE_JSON_TOKEN = os.environ.get('GOOGLE_JSON_TOKEN')
     GOOGLE_SHEET_DB_NAME = os.environ.get('GOOGLE_SHEET_DB_NAME')
     JWT_SECRET = os.environ.get('JWT_SECRET', 'jwt_insecure_secret')
-    CLIENT_APP_FOLDER = '../static'
+    CLIENT_APP_FOLDER = '../web'
