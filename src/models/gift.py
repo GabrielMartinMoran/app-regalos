@@ -1,5 +1,5 @@
-from exceptions.model_validation_exception import ModelValidationException
-from utils.id_generator import IdGenerator
+from src.exceptions.model_validation_exception import ModelValidationException
+from src.utils.id_generator import IdGenerator
 
 
 class Gift:

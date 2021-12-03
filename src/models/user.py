@@ -1,4 +1,4 @@
-from utils import hashing
+from src.utils import hashing
 
 
 class User:

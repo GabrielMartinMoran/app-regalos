@@ -62,7 +62,7 @@ export class MyGifts extends Component {
     async _getGifts() {
         const gifts = await this._giftRepository.getMyGifts();
         let giftsList = '';
-        if (giftsList.length > 0) {
+        if (gifts.length > 0) {
             for (const gift of gifts) {
                 giftsList += /*html*/`
                     ${new GiftCard(gift, true, false,

@@ -1,7 +1,7 @@
 from typing import List
 
-from models.user import User
-from repositories.spreadsheet_repository import SpreadsheetRepository
+from src.models.user import User
+from src.repositories.spreadsheet_repository import SpreadsheetRepository
 
 
 class UserRepository(SpreadsheetRepository):
@@ -14,19 +14,8 @@ class UserRepository(SpreadsheetRepository):
         if filtered:
             return User.from_dict(filtered[0])
         return None
-        """
-        df = self._get_table_df()
-        rows = df[(df.username == username) & (df.hashed_password == hashed_password)].to_dict('records')
-        if rows:
-            return User.from_dict(rows[0])
-        return None
-        """
 
     def get_all(self) -> List[User]:
-        """
-        df = self._get_table_df()
-        rows = df.to_dict('records')
-        """
         return [User.from_dict(row) for row in self._get_table()]
 
     def get_by_username(self, username: str) -> User:
@@ -35,10 +24,3 @@ class UserRepository(SpreadsheetRepository):
         if filtered:
             return User.from_dict(filtered[0])
         return None
-        """        
-        df = self._get_table_df()
-        rows = df[(df.username == username)].to_dict('records')
-        if rows:
-            return User.from_dict(rows[0])
-        return None
-        """

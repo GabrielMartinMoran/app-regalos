@@ -1,5 +1,5 @@
 import pandas as pd
-from repositories.spreadsheet_repository import SpreadsheetRepository
+from src.repositories.spreadsheet_repository import SpreadsheetRepository
 
 
 class DBInitializer(SpreadsheetRepository):

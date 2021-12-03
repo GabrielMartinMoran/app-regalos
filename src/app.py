@@ -1,18 +1,17 @@
 from flask import Flask, request, send_from_directory, make_response, Response, jsonify
 from flask_cors import CORS
 from flask_compress import Compress
-
-from config_provider import ConfigProvider
-from db_initializer import DBInitializer
-from exceptions.element_not_found_exception import ElementNotFoundException
-from exceptions.gift_already_claimed_exception import GiftAlreadyClaimedException
-from exceptions.gift_not_claimed_by_provided_user_exception import GiftNotClaimedByProvidedUserException
-from exceptions.model_validation_exception import ModelValidationException
-from models.gift import Gift
-from models.token import Token
-from repositories.user_repository import UserRepository
-from repositories.gift_repository import GiftRepository
-from utils import http_methods, hashing
+from src.db_initializer import DBInitializer
+from src.exceptions.element_not_found_exception import ElementNotFoundException
+from src.exceptions.gift_already_claimed_exception import GiftAlreadyClaimedException
+from src.exceptions.gift_not_claimed_by_provided_user_exception import GiftNotClaimedByProvidedUserException
+from src.exceptions.model_validation_exception import ModelValidationException
+from src.models.gift import Gift
+from src.models.token import Token
+from src.repositories.user_repository import UserRepository
+from src.repositories.gift_repository import GiftRepository
+from src.config_provider import ConfigProvider
+from src.utils import http_methods, hashing
 
 print('Starting app')
 

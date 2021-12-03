@@ -1,5 +1,5 @@
-from config_provider import ConfigProvider
-from models.user import User
+from src.config_provider import ConfigProvider
+from src.models.user import User
 import jwt
 
 
