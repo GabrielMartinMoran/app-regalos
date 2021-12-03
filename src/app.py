@@ -252,36 +252,14 @@ def my_claimed_gifts():
 @app.route('/', methods=[http_methods.GET])
 @compress.compressed()
 def root():
-    return send_from_directory(ConfigProvider.CLIENT_APP_FOLDER, 'index.html',
-                               max_age=-1 if ConfigProvider.RUN_DEBUG_MODE else 10)
+    return send_from_directory(ConfigProvider.CLIENT_APP_FOLDER, 'index.html', max_age=-1)
 
 
 @app.route('/<path:path>', methods=[http_methods.GET])
 @compress.compressed()
 def static_file(path):
-    _path = path.replace('..', '').replace('//', '/')
-    content = ''
-    with open(f'{pathlib.Path(__file__).parent.resolve()}/{ConfigProvider.CLIENT_APP_FOLDER}/{_path}', 'r') as f:
-        content = f.read()
-    mimetypes = {
-        'js': 'application/javascript',
-        'html': 'text/html',
-        'css': 'text/css',
-        'ico': 'image/x-icon'
-    }
-    mimetype = 'text/plain'
-    for x in mimetypes:
-        if f'.{x}' in _path:
-            mimetype = mimetypes[x]
-            break
-    return Response(content, mimetype=mimetype)
-    """
-    return send_from_directory(ConfigProvider.CLIENT_APP_FOLDER, path,
-                               max_age=-1 if ConfigProvider.RUN_DEBUG_MODE else 10)
-    """
+    return send_from_directory(ConfigProvider.CLIENT_APP_FOLDER, path, max_age=-1)
 
 
-def run():
-    app.run(debug=ConfigProvider.RUN_DEBUG_MODE,
-            use_reloader=ConfigProvider.USE_RELOADER,
-            port=ConfigProvider.APP_PORT)
+def run(debug: bool, port: int):
+    app.run(debug=debug, port=port)
