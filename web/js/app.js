@@ -28,7 +28,7 @@ function loadTheme() {
 
 function onLoad() {
     registerComponentUnloader();
-    loadTheme()
+    loadTheme();
     index.drawIn('indexViewport');
     router.setUp();
 }

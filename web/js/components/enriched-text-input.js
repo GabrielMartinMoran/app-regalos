@@ -1,4 +1,5 @@
 import { Pallete } from '../config.js';
+import { ScreenSizeHelper } from '../utils/screen-size-helper.js';
 import { ReactiveComponent } from './reactive-component.js';
 
 export class EnrichedTextInput extends ReactiveComponent {
@@ -14,12 +15,17 @@ export class EnrichedTextInput extends ReactiveComponent {
 
     _getElementHtml() {
         return /*html*/ `
-        <textarea id="${this._id}" class="textInput" name="${this._name}" placeholder="${this._placeholder}" onchange="${this._getChangeEventHandler()}"></textarea>
+            <textarea id="${this._id}" class="enrichedTextInput" name="${this._name}" placeholder="${this._placeholder}" onchange="${this._getChangeEventHandler()}"></textarea>
         `;
     }
 
     _getElementCSS() {
         return /*css*/ `
+
+            .enrichedTextInput {
+                width: 50px;
+            }
+
             .tox-toolbar__primary {
                 background: ${Pallete.ELEMENTS} !important;
                 border-color: ${Pallete.TEXT_SHADOW};
@@ -88,6 +94,26 @@ export class EnrichedTextInput extends ReactiveComponent {
             .tox-collection__item-label span {
                 text-decoration-color: ${Pallete.TEXT_SHADOW} !important;
             }
+
+            .tox .tox-toolbar, .tox .tox-toolbar__overflow, .tox .tox-toolbar__primary {
+                background: ${Pallete.ELEMENTS} !important;
+            }
+
+            
+
+            ${ScreenSizeHelper.onMediumScreensAndBellow} {
+                .tox-toolbar {
+                    flex-wrap: wrap !important;
+                }
+                .tox-toolbar__group {
+                    display: flex !important;
+                    flex: 0 0 auto !important;
+                    flex-shrink: 0 !important;
+                    flex-wrap: wrap !important;
+                    padding: 0 0 !important;
+                }             
+            }
+            
         `;
     }
 
@@ -117,10 +143,17 @@ export class EnrichedTextInput extends ReactiveComponent {
         const rendered = super.render();
         setTimeout(() => {
             tinymce.init({
+                theme: 'silver',
                 language: 'es',
                 selector: `#${this._id}`,
                 menubar: false,
                 statusbar: false,
+                mobile: {
+                    theme: 'silver',
+                    menubar: false,
+                    statusbar: false,
+                    height: 300,
+                },
                 init_instance_callback: (inst) => this._updateTextColor(),
                 setup: (eventDetector) => {
                     eventDetector.on('change', (event) => {

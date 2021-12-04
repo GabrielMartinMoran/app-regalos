@@ -1,16 +1,18 @@
+import { EmojisProvider } from '../utils/emojis-provider.js';
+
 export class User {
 
     _userIcons = {
-        0: '🥷',
-        1: '🧑‍🌾',
-        2: '🧙‍♂️',
-        3: '🧞',
-        4: '🧟',
-        5: '🧑‍🎤',
-        6: '🧝',
-        7: '🦹',
-        8: '🧛',
-        9: '🧜‍♂️',
+        0: EmojisProvider.getEmoji('userProfile0'),
+        1: EmojisProvider.getEmoji('userProfile1'),
+        2: EmojisProvider.getEmoji('userProfile2'),
+        3: EmojisProvider.getEmoji('userProfile3'),
+        4: EmojisProvider.getEmoji('userProfile4'),
+        5: EmojisProvider.getEmoji('userProfile5'),
+        6: EmojisProvider.getEmoji('userProfile6'),
+        7: EmojisProvider.getEmoji('userProfile7'),
+        8: EmojisProvider.getEmoji('userProfile8'),
+        9: EmojisProvider.getEmoji('userProfile9'),
     }
 
     _username = null;
@@ -33,8 +35,8 @@ export class User {
         let hash = 0, i, chr;
         if (this.getUsername().length === 0) return hash;
         for (i = 0; i < this.getUsername().length; i++) {
-            chr   = this.getUsername().charCodeAt(i);
-            hash  = ((hash << 5) - hash) + chr;
+            chr = this.getUsername().charCodeAt(i);
+            hash = ((hash << 5) - hash) + chr;
             hash |= 0; // Convert to 32bit integer
         }
         const strHash = hash.toString();
