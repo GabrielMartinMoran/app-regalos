@@ -14,14 +14,14 @@ export class EmojisProvider {
     }
 
     static _emojisForUnsupportedBrowsers = {
-        'userProfile0': '😀',
+        'userProfile0': '🙃',
         'userProfile1': '😁',
         'userProfile2': '😂',
         'userProfile3': '😊',
         'userProfile4': '🤓',
         'userProfile5': '😎',
         'userProfile6': '😳',
-        'userProfile7': '😵‍💫',
+        'userProfile7': '😜',
         'userProfile8': '🤠',
         'userProfile9': '😇',
     }
