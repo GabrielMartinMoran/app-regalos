@@ -93,7 +93,7 @@ export class GiftCard extends Component {
         if (this._gift.getClaimer()) {
             claimContainerHtml += /*html*/`
                 ${this._gift.getClaimer().getUsername() === this._authRepository.getAuthenticatedUsername() ?
-                    new Button('unclaimButton', 'danger', 'Mejor no me encargo yo...',
+                    new Button('unclaimButton', 'danger', 'Mejor no me encargo...',
                         () => { this._unclaimGift() }).render() :
                     '<p class="otherPersonClaimed">' +
                     this._gift.getClaimer().getName() + ' se encarga de este regalo' +
