@@ -3,6 +3,7 @@ import { Button } from '../components/button.js';
 import { GiftCard } from '../components/gift-card.js';
 import { Link } from '../components/link.js';
 import { GiftRepository } from '../repositories/gift-repository.js';
+import { EmojisProvider } from '../utils/emojis-provider.js';
 
 export class MyClaims extends Component {
 
@@ -50,10 +51,9 @@ export class MyClaims extends Component {
                 <div>
             `;
             for (const gift of giftsByUser[username]) {
-                totalClaims ++;
+                totalClaims++;
                 giftsList += /*html*/`
-                    ${
-                        new GiftCard(gift, false, true).render()
+                    ${new GiftCard(gift, false, true).render()
                     }
                 `;
             }
@@ -65,8 +65,8 @@ export class MyClaims extends Component {
         if (totalClaims == 0) {
             giftsList += /*html*/`
                 <div class="container">
-                    <h3>🦗 Cri cri... ¡Por acá no vuela ni una mosca! Pareciera que no querés hacerle un regalo a nadie...</h3>
-                    <h3>¿Por que no probás ${new Link('linkSearchUsers', '#/search-users','buscando a alguien al que hacerle un regalo', 'primaryText').render()}?</h3>
+                    <h3>${EmojisProvider.getEmoji('emptyGiftsList')} ${EmojisProvider.emojisSupported() ? 'Cri cri...' : 'Buu...'} ¡Por acá no vuela ni una mosca! Pareciera que no querés hacerle un regalo a nadie...</h3>
+                    <h3>¿Por que no probás ${new Link('linkSearchUsers', '#/search-users', 'buscando a alguien al que hacerle un regalo', 'primaryText').render()}?</h3>
                 </div>
             `;
         }

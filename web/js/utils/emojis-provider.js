@@ -11,6 +11,8 @@ export class EmojisProvider {
         'userProfile7': '🦹',
         'userProfile8': '🧛',
         'userProfile9': '🧜‍♂️',
+        'emptyClaimedList': '🦗',
+        'emptyGiftsList': '🧹',
     }
 
     static _emojisForUnsupportedBrowsers = {
@@ -24,6 +26,8 @@ export class EmojisProvider {
         'userProfile7': '😜',
         'userProfile8': '🤠',
         'userProfile9': '😇',
+        'emptyClaimedList': '👻',
+        'emptyGiftsList': '🧹',
     }
 
     static _defaultEmoji = '🔘';
