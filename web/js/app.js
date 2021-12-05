@@ -21,7 +21,7 @@ const registerComponentUnloader = () => {
 
 function loadTheme() {
     if(!localStorage.getItem('theme')) {
-        localStorage.setItem('theme', 'light');
+        localStorage.setItem('theme', 'dark');
     }
 }
 

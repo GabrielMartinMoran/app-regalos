@@ -83,6 +83,10 @@ export class Index extends Component {
                 text-align: center;
             }
 
+            .primaryText {
+                color: ${Pallete.PRIMARY};
+            }
+
             #appGrid {
                 display: grid;
                 height: 100%;

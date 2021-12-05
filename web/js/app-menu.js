@@ -3,6 +3,7 @@ import { Link } from './components/link.js';
 import { Pallete } from './config.js';
 import { ScreenSizeHelper } from './utils/screen-size-helper.js';
 import { AuthRepository } from './repositories/auth-repository.js';
+import { Logo } from './components/logo.js';
 
 export class AppMenu extends Component {
 
@@ -19,7 +20,7 @@ export class AppMenu extends Component {
     _getElementHtml() {
         return /*html*/`
         <div class="container" id="appMenu" hidden>
-            <h2 id="appTitle">Regalorio</h2>
+            <h2 id="appTitle">${new Logo().render()}</h2>
             <span id="navbarSpacer"></span>
             <hr id="menuDivider">  
             ${
@@ -30,7 +31,7 @@ export class AppMenu extends Component {
             }
             <hr id="menuDivider">       
             ${
-                new Link('toggleThemeLink', '', this._isLightTheme() ? '🌚 Cambiar a tema oscuro': '🌞 Cambiar a tema claro', 'menuItem', () => this._toggleTheme()).render()
+                new Link('toggleThemeLink', '', this._isDarkTheme() ? '🌞 Cambiar a tema claro' : '🌚 Cambiar a tema oscuro', 'menuItem', () => this._toggleTheme()).render()
             }
             <hr id="menuDivider">       
             ${
@@ -106,8 +107,8 @@ export class AppMenu extends Component {
         window.location.reload();
     }
 
-    _isLightTheme() {
+    _isDarkTheme() {
         const currentTheme = localStorage.getItem('theme');
-        return currentTheme === 'light' || !currentTheme;
+        return currentTheme === 'dark' || !currentTheme;
     }
 }

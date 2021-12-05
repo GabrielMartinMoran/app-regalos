@@ -1,6 +1,7 @@
 import { Component } from '../component.js';
 import { Button } from '../components/button.js';
 import { Input } from '../components/input.js';
+import { Logo } from '../components/logo.js';
 import { AuthRepository } from '../repositories/auth-repository.js';
 
 export class Login extends Component {
@@ -29,7 +30,7 @@ export class Login extends Component {
     _getElementHtml() {
         return /*html*/`
         <div class="center">
-            <h1>Regalorio</h1>
+            <h1>${new Logo().render()}</h1>
         </div>
         <div id="loginFormContainer">
             <div id="loginFormSpacerLeft"></div>

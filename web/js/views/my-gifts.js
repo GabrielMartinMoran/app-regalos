@@ -1,6 +1,7 @@
 import { Component } from '../component.js';
 import { Button } from '../components/button.js';
 import { GiftCard } from '../components/gift-card.js';
+import { Link } from '../components/link.js';
 import { GiftRepository } from '../repositories/gift-repository.js';
 
 export class MyGifts extends Component {
@@ -75,6 +76,7 @@ export class MyGifts extends Component {
             giftsList += /*html*/`
                 <div class="container">
                     <h3>🧹 ¡Las cosas se ven muy limpias por aca! Se ve que no agregaste ningun regalo a tu lista...</h3>
+                    <h3>¿Por que no probás ${new Link('linkCreateGift', '#/create-gift','agregando un regalo a tu lista', 'primaryText').render()}?</h3>
                 </div>
             `;
         }

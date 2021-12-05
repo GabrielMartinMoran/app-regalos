@@ -1,6 +1,7 @@
 import { Component } from '../component.js';
 import { Pallete } from '../config.js';
 import { Button } from './button.js';
+import { Logo } from './logo.js';
 
 export class Navbar extends Component {
 
@@ -21,7 +22,7 @@ export class Navbar extends Component {
                     () => { this._onToggleMenu() }).render()
             }
             <span id="navbarElementsSpacer"></span>
-            <h2>Regalorio</h2>
+            <h2>${new Logo().render()}</h2>
         </div>
         `;
     }

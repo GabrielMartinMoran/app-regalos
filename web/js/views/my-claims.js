@@ -1,6 +1,7 @@
 import { Component } from '../component.js';
 import { Button } from '../components/button.js';
 import { GiftCard } from '../components/gift-card.js';
+import { Link } from '../components/link.js';
 import { GiftRepository } from '../repositories/gift-repository.js';
 
 export class MyClaims extends Component {
@@ -40,6 +41,7 @@ export class MyClaims extends Component {
 
         let giftsList = '';
 
+        let totalClaims = 0;
         for (const username of Object.keys(giftsByUser)) {
             // If the key exists, it allways have at leas 1 element
             const user = giftsByUser[username][0].getUser();
@@ -48,6 +50,7 @@ export class MyClaims extends Component {
                 <div>
             `;
             for (const gift of giftsByUser[username]) {
+                totalClaims ++;
                 giftsList += /*html*/`
                     ${
                         new GiftCard(gift, false, true).render()
@@ -59,10 +62,15 @@ export class MyClaims extends Component {
             `;
         }
 
-
-        for (const gift of gifts) {
-
+        if (totalClaims == 0) {
+            giftsList += /*html*/`
+                <div class="container">
+                    <h3>🦗 Cri cri... ¡Por acá no vuela ni una mosca! Pareciera que no querés hacerle un regalo a nadie...</h3>
+                    <h3>¿Por que no probás ${new Link('linkSearchUsers', '#/search-users','buscando a alguien al que hacerle un regalo', 'primaryText').render()}?</h3>
+                </div>
+            `;
         }
+
         document.getElementById('giftsList').innerHTML = giftsList;
     }
 }

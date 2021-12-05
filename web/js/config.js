@@ -19,6 +19,9 @@ const DARK_PALLETE = {
     TEXT_SHADOW: '#c2c2c2',
 
     MENU: '#16131f',
+
+    LOGO_PREFIX: '#f5f5f5',
+    LOGO_SUFIX: '#e63946',
 };
 
 const LIGHT_PALLETE = {
@@ -42,8 +45,11 @@ const LIGHT_PALLETE = {
     TEXT_SHADOW: '#26281F',
 
     MENU: '#F2D9B0',
+
+    LOGO_PREFIX: '#151611',
+    LOGO_SUFIX: '#e63946',
 };
 
-export const Pallete = localStorage.getItem('theme') === 'dark' ? DARK_PALLETE : LIGHT_PALLETE;
+export const Pallete = localStorage.getItem('theme') === 'light' ? LIGHT_PALLETE : DARK_PALLETE;
 
 export const WEB_API_URL = `${window.location.origin}/api`;

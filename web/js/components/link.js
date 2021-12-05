@@ -1,4 +1,5 @@
 import { Component } from '../component.js';
+import { Pallete } from '../config.js';
 import { UUID4Generator } from '../utils/uuid4-generator.js';
 
 export class Link extends Component {
