@@ -18,8 +18,11 @@ export class Input extends ReactiveComponent {
     }
 
     _getElementHtml() {
+        const type = this._type === 'username' ? 'text' : this._type;
         return /*html*/ `
-            <input type="${this._type}" id="${this._id}" class="textInput" name="${this._name}" placeholder="${this._placeholder}" onchange="${this._getChangeEventHandler()}">
+            <input type="${type}" ${
+                this._type === 'username' ? 'autocorrect="off" autocapitalize="none" autocomplete="off"' : ''
+            } id="${this._id}" class="textInput" name="${this._name}" placeholder="${this._placeholder}" onchange="${this._getChangeEventHandler()}">
             <script>
                 document.getElementById("${this._id}").addEventListener('keyup', (event) => {
                     if (event.keyCode === 13) {

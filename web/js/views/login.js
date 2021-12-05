@@ -16,7 +16,7 @@ export class Login extends Component {
             window.location = `#/home`;
             return;
         }
-        this._usernameInput = new Input('usernameInput', 'text', 'Usuario',(username) => this._formData.username = username, () => this._clickLoginButton());
+        this._usernameInput = new Input('usernameInput', 'username', 'Usuario',(username) => this._formData.username = username, () => this._clickLoginButton());
         this._passwordInput = new Input('passwordInput', 'password', 'Contraseña', (password) => this._formData.password = password, () => this._clickLoginButton())
 
     }
