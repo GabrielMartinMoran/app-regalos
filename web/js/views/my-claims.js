@@ -65,7 +65,7 @@ export class MyClaims extends Component {
         if (totalClaims == 0) {
             giftsList += /*html*/`
                 <div class="container">
-                    <h3>${EmojisProvider.getEmoji('emptyGiftsList')} ${EmojisProvider.emojisSupported() ? 'Cri cri...' : 'Buu...'} ¡Por acá no vuela ni una mosca! Pareciera que no querés hacerle un regalo a nadie...</h3>
+                    <h3>${EmojisProvider.getEmoji('emptyClaimedList')} ${EmojisProvider.emojisSupported() ? 'Cri cri...' : 'Buu...'} ¡Por acá no vuela ni una mosca! Pareciera que no querés hacerle un regalo a nadie...</h3>
                     <h3>¿Por que no probás ${new Link('linkSearchUsers', '#/search-users', 'buscando a alguien al que hacerle un regalo', 'primaryText').render()}?</h3>
                 </div>
             `;

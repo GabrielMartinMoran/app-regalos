@@ -27,7 +27,7 @@ export class EmojisProvider {
         'userProfile8': '🤠',
         'userProfile9': '😇',
         'emptyClaimedList': '👻',
-        'emptyGiftsList': '🧹',
+        'emptyGiftsList': '📭',
     }
 
     static _defaultEmoji = '🔘';

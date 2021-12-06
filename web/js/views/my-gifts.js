@@ -76,7 +76,9 @@ export class MyGifts extends Component {
         } else {
             giftsList += /*html*/`
                 <div class="container">
-                    <h3>${EmojisProvider.getEmoji('emptyGiftsList')} ¡Las cosas se ven muy limpias por aca! Se ve que no agregaste ningun regalo a tu lista...</h3>
+                    <h3>${EmojisProvider.getEmoji('emptyGiftsList')} ${
+                        EmojisProvider.emojisSupported() ? '¡Las cosas se ven muy limpias por aca!': '¡Las cosas se ven muy vacías por aca!'
+                    } Se ve que no agregaste ningun regalo a tu lista...</h3>
                     <h3>¿Por que no probás ${new Link('linkCreateGift', '#/create-gift','agregando un regalo a tu lista', 'primaryText').render()}?</h3>
                 </div>
             `;

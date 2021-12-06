@@ -11,7 +11,7 @@ export class Home extends Component {
         return /*html*/`
             <h2>${new Logo().render()}</h2>
             <p>
-            ¡Bienvenido al regalorio, la aplicación creada para simplificarle la vida a quienes quieran hacer regalos, 
+            ¡Bienvenido a regalista, la aplicación creada para simplificarle la vida a quienes quieran hacer regalos, 
             a la vez que aumenta las probabilidades de que te den lo que querés! ¿No es genial?
             </p>
         `;
