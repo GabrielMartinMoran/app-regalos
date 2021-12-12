@@ -4,7 +4,7 @@ from src.repositories.spreadsheet_repository import SpreadsheetRepository
 
 class DBInitializer(SpreadsheetRepository):
     _TABLES = {
-        'Users': pd.DataFrame(columns=['username', 'hashed_password', 'name']),
+        'Users': pd.DataFrame(columns=['username', 'hashed_password', 'name', 'groups']),
         'Gifts': pd.DataFrame(columns=['gift_id', 'username', 'name', 'detail', 'claimer']),
     }
 

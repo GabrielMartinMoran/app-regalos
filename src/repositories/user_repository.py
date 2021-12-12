@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Set
 
 from src.models.user import User
 from src.repositories.spreadsheet_repository import SpreadsheetRepository
@@ -15,8 +15,14 @@ class UserRepository(SpreadsheetRepository):
             return User.from_dict(filtered[0])
         return None
 
-    def get_all(self) -> List[User]:
-        return [User.from_dict(row) for row in self._get_table()]
+    def get_by_groups(self, groups: Set[int]) -> List[User]:
+        users = []
+        for row in self._get_table():
+            user = User.from_dict(row)
+            # Sets intersection
+            if len(groups & user.groups) > 0:
+                users.append(user)
+        return users
 
     def get_by_username(self, username: str) -> User:
         table = self._get_table()

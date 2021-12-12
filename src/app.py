@@ -44,7 +44,8 @@ def get_users():
         return jsonify({'message': 'Forbidden'}), 403
     repo = UserRepository()
     try:
-        users = repo.get_all()
+        user = repo.get_by_username(request.token.username)
+        users = repo.get_by_groups(user.groups)
         return jsonify([user.to_dict() for user in users])
     except Exception as e:
         print(e)
