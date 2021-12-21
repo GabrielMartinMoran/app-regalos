@@ -14,7 +14,7 @@ export class GiftCard extends Component {
     _allowMarkAsClaimed = true;
     _onDeleteCallback = null;
 
-    constructor(gift, allowEdit = false, allowMarkAsClaimed = true, onDeleteCallback = (gift) => {}) {
+    constructor(gift, allowEdit = false, allowMarkAsClaimed = true, onDeleteCallback = (gift) => { }) {
         super();
         this._authRepository = new AuthRepository();
         this._giftRepository = new GiftRepository();
@@ -31,9 +31,9 @@ export class GiftCard extends Component {
                 ${this._gift.getName()}
             </h2>
             <hr class="giftCardDivider">
-            <p>
+            <div class="giftCardDetail">
                 ${this._gift.getDetail()}
-            </p>
+            </div>
             <div class="giftCardEditButtons">
             ${this._allowEdit ? (
                 new Button('editButton', 'primary-small', '🖋 Editar',
@@ -81,6 +81,13 @@ export class GiftCard extends Component {
 
             .giftCardEditButtonsSpacer {
                 margin-right: 0.25rem;
+            }
+
+            .giftCardDetail {
+                display: table;
+                table-layout: fixed;
+                width: 100%;
+                word-wrap: break-word;
             }
         `;
     }
